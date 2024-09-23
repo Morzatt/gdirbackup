@@ -14,15 +14,15 @@ var depth int = 0;
 func Read(source string) error {
 	content, err := os.ReadDir(source)
 	if err != nil {
-		return fmt.Errorf("an error has ocurred when reading the path: %e", err)
+		return err
 	}
 	for _, c := range content {		
 		depth++
 		if c.IsDir() {
-			fmt.Printf("%*s |──%s/ \n", depth*2, "", c.Name())
+			fmt.Printf("%*s%s/ \n", depth*3, "", c.Name())
 			Read(fmt.Sprintf("%s/%s", source, c.Name())); 
 		} else {
-			fmt.Printf("%*s |──%s\n", depth*2, "", c.Name())
+			fmt.Printf("%*s|─%s\n", depth*3, "", c.Name())
 		}
 		depth--
 	}
