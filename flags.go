@@ -30,7 +30,7 @@ func Read(source string) error {
 	}
 
 	if depth == 0 {
-		Write(fmt.Sprintf("%s \n", path.Base(source)), *destination)
+		Write(fmt.Sprintf("%s/ \n", path.Base(source)), *destination)
 	}
 
 	for _, c := range content {		
